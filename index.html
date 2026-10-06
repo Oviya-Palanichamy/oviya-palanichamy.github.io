@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Oviya Palanichamy | Data Science &amp; ML</title>
+<meta name="description" content="Portfolio of Oviya Palanichamy, M.Sc. Data Science student working on machine learning, time-series forecasting and full-stack web apps.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f4ff;--surface:#fff;--ink:#241f3d;--muted:#5d5880;--line:#e0dcf5;
+  --brand:#5b4bdb;--brand-ink:#fff;--mint:#c9f4e6;--peach:#ffe2d1;--sun:#fff0b8;--pred:#e8590c;
+  --head:"Baloo 2","Trebuchet MS",Arial,sans-serif;--body:"Nunito","Segoe UI",Arial,sans-serif;
+  --shadow:0 8px 24px rgba(91,75,219,.12);
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14112b;--surface:#1e1a3d;--ink:#f1eeff;--muted:#b4aedb;--line:#342e63;--brand:#9d8cff;--brand-ink:#14112b;--mint:#17493f;--peach:#5a3322;--sun:#554a14;--pred:#ff9a57;--shadow:0 8px 24px rgba(0,0,0,.35)}}
+:root[data-theme="dark"]{--bg:#14112b;--surface:#1e1a3d;--ink:#f1eeff;--muted:#b4aedb;--line:#342e63;--brand:#9d8cff;--brand-ink:#14112b;--mint:#17493f;--peach:#5a3322;--sun:#554a14;--pred:#ff9a57;--shadow:0 8px 24px rgba(0,0,0,.35)}
+html{scroll-padding-top:4.5rem;scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.05rem;line-height:1.65}
+a{color:var(--brand)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--brand);outline-offset:3px;border-radius:8px}
+.wrap{max-width:64rem;margin:0 auto;padding:0 1.25rem}
+h1,h2,h3{font-family:var(--head);line-height:1.15;margin:0}
+#bar{position:fixed;top:0;left:0;height:4px;width:0;background:var(--brand);z-index:30}
+header.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.nav{display:flex;align-items:center;gap:.4rem;padding:.6rem 0;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{white-space:nowrap;text-decoration:none;color:var(--muted);font-weight:700;padding:.35rem .8rem;border-radius:99px}
+.nav a:hover{background:var(--line)}
+.nav a.on{background:var(--brand);color:var(--brand-ink)}
+#theme{margin-left:auto;flex:none;border:2px solid var(--line);background:var(--surface);color:var(--ink);border-radius:99px;padding:.3rem .8rem;font:700 .95rem var(--body);cursor:pointer}
+section{padding-top:4rem}
+h2{font-size:2rem;margin-bottom:.4rem}
+.sub{color:var(--muted);margin:0 0 1.6rem}
+.card{background:var(--surface);border:2px solid var(--line);border-radius:1.2rem;padding:1.3rem 1.4rem;box-shadow:var(--shadow)}
+/* hero */
+.hero{padding-top:3rem;display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:center}
+.hero h1{font-size:clamp(2.2rem,6vw,3.8rem);font-weight:700}
+.wave{display:inline-block;transform-origin:70% 70%;animation:wave 2.4s ease-in-out 2}
+@keyframes wave{0%,60%,100%{transform:rotate(0)}10%,30%{transform:rotate(16deg)}20%,40%{transform:rotate(-10deg)}50%{transform:rotate(10deg)}}
+.role{font-family:var(--head);font-size:1.5rem;color:var(--brand);min-height:2.2rem;margin:.6rem 0 .8rem}
+.lead{font-size:1.15rem;color:var(--muted);max-width:32rem;margin:0 0 1.4rem}
+.btns{display:flex;gap:.7rem;flex-wrap:wrap}
+.btn{display:inline-block;padding:.65rem 1.2rem;border-radius:99px;font:700 1rem var(--body);text-decoration:none;border:2px solid var(--brand);cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.p{background:var(--brand);color:var(--brand-ink)}
+.btn.g{background:transparent;color:var(--brand)}
+.chart svg{display:block;width:100%;height:auto;touch-action:pan-y}
+.readout{font-size:.9rem;color:var(--muted);min-height:1.4rem;margin:.3rem 0 0}
+.legend{display:flex;gap:1.2rem;flex-wrap:wrap;font-size:.88rem;color:var(--muted)}
+.legend i{display:inline-block;width:1.2rem;border-top:3px solid var(--ink);vertical-align:middle;margin-right:.4rem}
+.legend i.p{border-color:var(--pred)}
+.draw{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 2s ease-out forwards}
+.draw.p{animation-delay:.4s}
+@keyframes draw{to{stroke-dashoffset:0}}
+/* about */
+.about p{max-width:44rem;margin:.2rem 0 .9rem}
+.facts{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem}
+.chip{display:inline-block;background:var(--surface);border:2px solid var(--line);border-radius:99px;padding:.25rem .8rem;font-weight:600;font-size:.95rem}
+/* internships */
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem}
+.job .meta{color:var(--muted);font-size:.95rem;margin:.2rem 0 .6rem}
+.job .tag{display:inline-block;background:var(--mint);border-radius:99px;padding:.1rem .7rem;font-size:.85rem;font-weight:700;margin-bottom:.5rem}
+.job:hover{transform:translateY(-4px)}
+.job{transition:transform .2s}
+/* projects */
+details.proj{margin-bottom:1rem}
+details.proj summary{list-style:none;cursor:pointer;display:flex;gap:1rem;align-items:center;justify-content:space-between}
+details.proj summary::-webkit-details-marker{display:none}
+details.proj h3{font-size:1.3rem}
+.stack{color:var(--muted);font-size:.92rem;margin-top:.2rem}
+.plus{flex:none;width:2.2rem;height:2.2rem;border-radius:50%;background:var(--brand);color:var(--brand-ink);display:grid;place-items:center;font:700 1.4rem var(--head);transition:transform .25s}
+details[open] .plus{transform:rotate(45deg)}
+details.proj ul{margin:1rem 0 0;padding-left:1.2rem}
+details.proj li{margin-bottom:.4rem}
+.more{margin:.6rem 0 0}
+.tech{margin-top:.7rem}.tech .chip{font-size:.85rem;padding:.12rem .65rem;background:var(--bg)}
+/* education */
+.edu{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem}
+.edu .big{font:700 2.2rem var(--head);color:var(--brand)}
+.edu .meta{color:var(--muted);font-size:.95rem}
+/* skills */
+.tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.2rem}
+.tab{border:2px solid var(--line);background:var(--surface);color:var(--ink);border-radius:99px;padding:.35rem 1rem;font:700 .95rem var(--body);cursor:pointer}
+.tab[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:var(--brand-ink)}
+.chips{display:flex;gap:.6rem;flex-wrap:wrap}
+.chips .chip{transition:transform .15s,background .15s;cursor:default}
+.chips .chip:hover{transform:translateY(-3px) rotate(-1.5deg);background:var(--sun)}
+.chips .chip[hidden]{display:none}
+/* lists */
+.list{display:grid;gap:.8rem}
+.item{display:flex;gap:.9rem;align-items:flex-start}
+.item .ic{flex:none;width:2.6rem;height:2.6rem;border-radius:.9rem;display:grid;place-items:center;font-size:1.3rem;background:var(--peach)}
+.item b{font-family:var(--head);font-size:1.1rem}
+.item .meta{display:block;color:var(--muted);font-size:.93rem}
+/* contact */
+.contact{text-align:center;background:var(--brand);color:var(--brand-ink);border-radius:1.6rem;padding:2.5rem 1.2rem;margin-top:4rem}
+.contact h2{margin-bottom:.5rem}
+.contact p{max-width:34rem;margin:0 auto 1.3rem}
+.contact .btn{border-color:var(--brand-ink)}
+.contact .btn.p{background:var(--brand-ink);color:var(--brand)}
+.contact .btn.g{color:var(--brand-ink)}
+#toast{position:fixed;left:50%;bottom:calc(1.4rem + env(safe-area-inset-bottom,0px));transform:translate(-50%,200%);background:var(--ink);color:var(--bg);padding:.6rem 1.1rem;border-radius:99px;font-weight:700;transition:transform .3s;z-index:40}
+#toast.show{transform:translate(-50%,0)}
+footer{padding:2rem 0;color:var(--muted);font-size:.9rem;text-align:center}
+@media (max-width:760px){.hero,.grid2,.edu{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.draw{stroke-dashoffset:0}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<header class="top"><div class="wrap"><nav class="nav" aria-label="Main">
+  <a href="#about">About</a><a href="#internships">Internships</a><a href="#projects">Projects</a><a href="#education">Education</a><a href="#skills">Skills</a><a href="#achievements">Achievements</a><a href="#activities">Activities</a><a href="#contact">Contact</a>
+  <button id="theme" type="button" aria-label="Switch between light and dark theme">🌙 Theme</button>
+</nav></div></header>
+
+<div class="wrap">
+  <div class="hero">
+    <div>
+      <h1>Hi, I am Oviya Palanichamy <span class="wave" aria-hidden="true">👋</span></h1>
+      <div class="role" aria-live="off"><span id="role">I build machine learning models</span></div>
+      <p class="lead">M.Sc. Data Science student from Coimbatore. I turn messy data into forecasts, and ideas into web apps people use.</p>
+      <div class="btns"><a class="btn p" href="#projects">See my projects</a><a class="btn g" href="#contact">Say hello</a></div>
+    </div>
+    <div class="card chart">
+      <svg id="fc" viewBox="0 0 800 240" role="img" aria-label="Illustrative chart of a predicted curve closely following an actual curve"></svg>
+      <div class="legend"><span><i></i>Actual</span><span><i class="p"></i>LSTM prediction</span></div>
+      <p class="readout" id="readout">Hover or touch the chart. Illustrative curve, not real market data.</p>
+    </div>
+  </div>
+
+
+  <main>
+    <section id="about">
+      <h2>About me</h2>
+      <p class="sub">A little about who I am.</p>
+      <div class="card about">
+        <p>I'm pursuing an M.Sc. in Data Science at Bharathiar University after a B.Sc. in Computer Science. I love machine learning, deep learning and time-series analysis, and I care about getting the maths behind them right: probability, statistics and linear algebra.</p>
+        <p>I also like shipping things. I helped build the placement portal used across two campuses of my university, and I'm now learning AWS so the models I build can run in the real world.</p>
+        <div class="facts"><span class="chip">📍 Coimbatore, India</span><span class="chip">🎓 M.Sc. Data Science</span><span class="chip">☁️ Learning AWS</span><span class="chip">🔎 Open to internships</span></div>
+      </div>
+    </section>
+
+    <section id="internships">
+      <h2>Internships</h2>
+      <p class="sub">Where I've learned on the job.</p>
+      <div class="grid2">
+        <div class="card job"><span class="tag">Now</span><h3>Cloud Technology Intern</h3><p class="meta">Cogniv Technologies, Coimbatore · Jun 2026 – present</p><p>Hands-on training in AWS: EC2 compute, S3 storage, IAM access control and RDS databases, plus how these fit together for scalable ML deployment.</p></div>
+        <div class="card job"><span class="tag">2024</span><h3>Data Science with Python</h3><p class="meta">Accent Techno Soft, Coimbatore · May 2024 – Jun 2024</p><p>Built a cancer prediction model on my own. A KNN classifier reached 95% test accuracy after feature selection and preprocessing, delivered end to end within the internship.</p></div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <p class="sub">Tap a project to see what's inside.</p>
+
+      <details class="card proj" open>
+        <summary><div><h3>Cryptocurrency price forecasting and volatility analysis</h3><div class="stack">Dec 2025 – Apr 2026</div><div class="chips tech" aria-label="Tech stack"><span class="chip">Python</span><span class="chip">Pandas</span><span class="chip">NumPy</span><span class="chip">Scikit-learn</span><span class="chip">TensorFlow/Keras</span><span class="chip">XGBoost</span><span class="chip">GARCH</span><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">Chart.js</span></div></div><span class="plus" aria-hidden="true">+</span></summary>
+        <ul>
+          <li>Compared 5 models (Linear Regression, Random Forest, XGBoost, KNN, LSTM) on 72K+ hourly BTC/USDT records from 2017 to 2025, with an 80/20 chronological split.</li>
+          <li>The LSTM predicted next-day price best: MAE 148.70, RMSE 189.84, R² 0.9962. Tree-based models scored negative R².</li>
+          <li>For volatility, an LSTM on Kalman-filtered sequences reached MAE 0.000657, 71% lower error than AR(1) and 97% lower than GARCH(1,1).</li>
+          <li>Built a dual-layer LSTM with dropout and shipped an interactive dashboard for price, volatility and model performance.</li>
+        </ul>
+        <p class="more" data-link="crypto"></p>
+      </details>
+
+      <details class="card proj">
+        <summary><div><h3>University placement portal</h3><div class="stack">Jan 2025 – May 2025 · Official project of the university's ICT Wing</div><div class="chips tech" aria-label="Tech stack"><span class="chip">Yii2</span><span class="chip">CakePHP</span><span class="chip">PHP</span><span class="chip">PostgreSQL</span><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span></div></div><span class="plus" aria-hidden="true">+</span></summary>
+        <ul>
+          <li>Built as the university's first digital placement system for final-year students, replacing Google Forms, emails and physical notices.</li>
+          <li>Student Module (Yii2): secure login with roll number, date of birth and captcha, plus tabs for placement details, recruitment progress, announcements and feedback.</li>
+          <li>Recruitment tracking: students record each assessment round, the final result and upload offer letters.</li>
+          <li>Admin Module (CakePHP, built collaboratively with two teammates): placement officers manage student data, post announcements and export three Excel reports for placement details, progress and feedback.</li>
+          <li>Backed by PostgreSQL tables for student details, recruitment progress, announcements and feedback. Acceptance-tested with students and faculty, and used across two campuses.</li>
+        </ul>
+        <p class="more">Source code is private because it is an official university system.</p>
+      </details>
+
+      <details class="card proj">
+        <summary><div><h3>Cancer prediction model</h3><div class="stack">May 2024 – Jun 2024</div><div class="chips tech" aria-label="Tech stack"><span class="chip">Python</span><span class="chip">Pandas</span><span class="chip">NumPy</span><span class="chip">Seaborn</span><span class="chip">Scikit-learn</span><span class="chip">KNN</span></div></div><span class="plus" aria-hidden="true">+</span></summary>
+        <ul>
+          <li>KNN classifier with 95% accuracy on test data after feature selection and preprocessing.</li>
+          <li>Delivered the whole cleaning and classification pipeline independently.</li>
+        </ul>
+        <p class="more" data-link="cancer"></p>
+      </details>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <p class="sub">My academic journey so far.</p>
+      <div class="edu">
+        <div class="card"><div class="big">8.30<small style="font-size:1rem;color:var(--muted)"> / 10</small></div><h3>M.Sc. Data Science</h3><p class="meta">Bharathiar University · Jul 2025 – present</p></div>
+        <div class="card"><div class="big">8.57<small style="font-size:1rem;color:var(--muted)"> / 10</small></div><h3>B.Sc. Computer Science</h3><p class="meta">Avinashilingam Institute for Home Science and Higher Education for Women · Aug 2022 – May 2025</p></div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <p class="sub">Pick a category to filter.</p>
+      <div class="tabs" id="tabs">
+        <button class="tab" type="button" data-f="all" aria-pressed="true">All</button>
+        <button class="tab" type="button" data-f="ml" aria-pressed="false">Machine learning</button>
+        <button class="tab" type="button" data-f="data" aria-pressed="false">Data and maths</button>
+        <button class="tab" type="button" data-f="web" aria-pressed="false">Web</button>
+        <button class="tab" type="button" data-f="cloud" aria-pressed="false">Cloud and tools</button>
+      </div>
+      <div class="chips" id="chips"></div>
+    </section>
+
+    <section id="achievements">
+      <h2>Academic achievements</h2>
+      <p class="sub">Recognition and courses I'm proud of.</p>
+      <div class="list">
+        <div class="card item"><span class="ic">🏅</span><div><b>Proficiency Certificate</b><span class="meta">Awarded for securing the 2nd highest marks in the class</span></div></div>
+        <div class="card item"><span class="ic">🥇</span><div><b>Affective Computing: Elite + Gold</b><span class="meta">NPTEL, IIIT Delhi and IIT Ropar · May 2026</span></div></div>
+        <div class="card item"><span class="ic">📊</span><div><b>Learning Analytics Tools</b><span class="meta">NPTEL, IIT Bombay · Dec 2024</span></div></div>
+        <div class="card item"><span class="ic">🧩</span><div><b>Yii2: From Beginner to Expert</b><span class="meta">Udemy · Mar 2025</span></div></div>
+        <div class="card item"><span class="ic">🔬</span><div><b>What is Data Science?</b><span class="meta">Coursera, IBM · Jun 2024</span></div></div>
+      </div>
+    </section>
+
+    <section id="activities">
+      <h2>Volunteering and extracurriculars</h2>
+      <p class="sub">Life outside the classroom.</p>
+      <div class="grid2">
+        <div class="card item"><span class="ic">🤖</span><div><b>Executive Member, A2I Club</b><span class="meta">Avinashilingam Artificial Intelligence Club · 2023 – 2024</span></div></div>
+        <div class="card item"><span class="ic">🤝</span><div><b>NSS Volunteer</b><span class="meta">National Service Scheme · 2022 – 2025</span></div></div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>Let's talk</h2>
+      <p>I'm looking for internships and entry-level roles in data science, machine learning and cloud. Email is the quickest way to reach me.</p>
+      <div class="btns" id="links" style="justify-content:center">
+        <a class="btn p" href="mailto:oviyapalanichamy04@gmail.com">Send an email</a>
+        <button class="btn g" type="button" id="copy">Copy email</button>
+      </div>
+    </section>
+  </main>
+  <footer>Made by Oviya Palanichamy · Coimbatore, Tamil Nadu, India</footer>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ===== EDIT THESE ===== An empty value ("") keeps that link hidden. */
+var LINKS={linkedin:"https://www.linkedin.com/in/oviya-palanichamy/",github:"",crypto:"",cancer:""};
+var EMAIL="oviyapalanichamy04@gmail.com";
+var $=function(s){return document.querySelector(s)},$$=function(s){return Array.prototype.slice.call(document.querySelectorAll(s))};
+var calm=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* links */
+[["linkedin","LinkedIn"],["github","GitHub"]].forEach(function(p){if(LINKS[p[0]]){var a=document.createElement("a");a.className="btn g";a.href=LINKS[p[0]];a.textContent=p[1];a.rel="noopener";$("#links").appendChild(a)}});
+$$("[data-link]").forEach(function(el){var u=LINKS[el.getAttribute("data-link")];if(u){var a=document.createElement("a");a.href=u;a.rel="noopener";a.textContent="View the code on GitHub";el.appendChild(a)}else el.remove()});
+
+/* toast + copy email */
+function toast(t){var e=$("#toast");e.textContent=t;e.classList.add("show");setTimeout(function(){e.classList.remove("show")},2200)}
+$("#copy").onclick=function(){if(navigator.clipboard){navigator.clipboard.writeText(EMAIL).then(function(){toast("Email copied ✓")},function(){toast(EMAIL)})}else toast(EMAIL)};
+
+/* theme toggle */
+$("#theme").onclick=function(){var r=document.documentElement,dark=r.getAttribute("data-theme")==="dark"||(!r.getAttribute("data-theme")&&window.matchMedia("(prefers-color-scheme: dark)").matches);r.setAttribute("data-theme",dark?"light":"dark");this.textContent=dark?"🌙 Theme":"☀️ Theme"};
+
+/* rotating roles */
+var roles=["I build machine learning models","I forecast time series","I ship full-stack web apps","I'm learning cloud on AWS"],ri=0;
+if(!calm)setInterval(function(){ri=(ri+1)%roles.length;var e=$("#role");e.style.opacity=0;setTimeout(function(){e.textContent=roles[ri];e.style.opacity=1},250)},2800);
+$("#role").style.transition="opacity .25s";
+
+/* scroll progress + active nav */
+addEventListener("scroll",function(){var h=document.documentElement;$("#bar").style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+"%"},{passive:true});
+var links=$$(".nav a"),io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)links.forEach(function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id)})})},{rootMargin:"-45% 0px -50% 0px"});
+$$("main section").forEach(function(s){io.observe(s)});
+
+/* skills filter */
+var SK=[["ml","TensorFlow/Keras"],["ml","Scikit-learn"],["ml","XGBoost"],["ml","Neural networks"],["ml","LSTM"],["ml","Ensemble methods"],["ml","GARCH"],["ml","Feature engineering"],["ml","Time-series analysis"],
+["data","Python"],["data","R"],["data","SQL"],["data","Pandas"],["data","NumPy"],["data","Matplotlib"],["data","Power BI"],["data","MS Excel"],["data","Probability and statistics"],["data","Linear algebra"],
+["web","Yii2"],["web","CakePHP"],["web","PHP"],["web","JavaScript"],["web","HTML5"],["web","CSS3"],["web","Chart.js"],["web","PostgreSQL"],["web","MySQL"],
+["cloud","AWS EC2"],["cloud","AWS S3"],["cloud","AWS VPC"],["cloud","AWS RDS"],["cloud","AWS IAM"],["cloud","Git"],["cloud","Jupyter Notebook"],["cloud","MATLAB"]];
+SK.forEach(function(s){var c=document.createElement("span");c.className="chip";c.dataset.c=s[0];c.textContent=s[1];$("#chips").appendChild(c)});
+$$(".tab").forEach(function(b){b.onclick=function(){$$(".tab").forEach(function(x){x.setAttribute("aria-pressed",x===b)});$$("#chips .chip").forEach(function(c){c.hidden=!(b.dataset.f==="all"||c.dataset.c===b.dataset.f)})}});
+
+/* illustrative chart with hover readout */
+var svg=$("#fc"),W=800,H=240,n=90,a=[],p=[],i,v=110,s=7,NS="http://www.w3.org/2000/svg";
+function rnd(){s=(s*9301+49297)%233280;return s/233280-.5}
+for(i=0;i<n;i++){v+=rnd()*14+Math.sin(i/9)*2.2;a.push(v)}
+for(i=0;i<n;i++){p.push(a[Math.max(0,i-1)]*.6+a[i]*.4+rnd()*3)}
+var all=a.concat(p),mn=Math.min.apply(null,all),mx=Math.max.apply(null,all);
+function X(j){return 10+j/(n-1)*(W-20)}function Y(y){return H-20-(y-mn)/(mx-mn)*(H-40)}
+function mk(t,at){var e=document.createElementNS(NS,t);for(var k in at)e.setAttribute(k,at[k]);svg.appendChild(e);return e}
+function d(arr){return arr.map(function(y,j){return(j?"L":"M")+X(j).toFixed(1)+" "+Y(y).toFixed(1)}).join(" ")}
+mk("path",{d:d(a),fill:"none",stroke:"var(--ink)","stroke-width":3,"stroke-linejoin":"round",pathLength:1,class:"draw"});
+mk("path",{d:d(p),fill:"none",stroke:"var(--pred)","stroke-width":3,"stroke-linejoin":"round",pathLength:1,class:"draw p"});
+var cx=mk("line",{y1:10,y2:H-10,stroke:"var(--muted)","stroke-width":1,visibility:"hidden"}),da=mk("circle",{r:5,fill:"var(--ink)",visibility:"hidden"}),dp=mk("circle",{r:5,fill:"var(--pred)",visibility:"hidden"});
+function hover(ev){var r=svg.getBoundingClientRect(),j=Math.round(((ev.clientX-r.left)/r.width*W-10)/(W-20)*(n-1));j=Math.max(0,Math.min(n-1,j));
+  cx.setAttribute("x1",X(j));cx.setAttribute("x2",X(j));da.setAttribute("cx",X(j));da.setAttribute("cy",Y(a[j]));dp.setAttribute("cx",X(j));dp.setAttribute("cy",Y(p[j]));
+  [cx,da,dp].forEach(function(e){e.setAttribute("visibility","visible")});
+  $("#readout").textContent="Step "+(j+1)+": actual "+a[j].toFixed(1)+", predicted "+p[j].toFixed(1)+" (illustrative)"}
+svg.addEventListener("pointermove",hover);svg.addEventListener("pointerdown",hover);
+svg.addEventListener("pointerleave",function(){[cx,da,dp].forEach(function(e){e.setAttribute("visibility","hidden")});$("#readout").textContent="Hover or touch the chart. Illustrative curve, not real market data."});
+</script>
+</body>
+</html>
